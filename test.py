@@ -18,7 +18,7 @@ for file in files:
     clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(8,8))
     res = clahe.apply(img)
 
-    x,y,z=plt.hist(img.ravel(),256,[0,256],label='x')
+    x,y = np.histogram(img.ravel(),256,[0,256])
 
     k=np.sum(x)
 
@@ -46,11 +46,8 @@ for file in files:
 
     plt.hist(img.ravel(),256,[0,256])
 
-    #path_out = path+"preprocessing_ouput\\"
+
     file = os.path.basename(file)
     file = file.split('.png')[0]
-    cv2.imwrite("E:\\sem4\\Sleep_quality_project\\sleep_Dataset\\2018-11-24-22h44m36s\\preprocessing_output\\histclahe{}.png".format(file),res)
-    print("E:\\sem4\\Sleep_quality_project\\sleep_Dataset\\2018-11-24-22h44m36s\\preprocessing_output\\histclahe{}.png".format(file))
-    #cv2.imshow('histclahe.png',,,res)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    cv2.imwrite("E:\\sem4\\Sleep_quality_project\\sleep_Dataset\\2018-11-24-22h44m36s\\output\\histclahe{}.png".format(file),res)
+    print("E:\\sem4\\Sleep_quality_project\\sleep_Dataset\\2018-11-24-22h44m36s\\output\\histclahe{}.png".format(file))
